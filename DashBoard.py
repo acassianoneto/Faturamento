@@ -4,7 +4,20 @@ import requests
 import pandas as pd
 import plotly.express as px
 
-st.set_page_config(layout='wide')
+# Adicione o seguinte código CSS
+st.markdown(
+    """
+    <style>
+    .stApp {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# st.set_page_config(layout='wide')
 
 
 def formatar_numero(valor, prefixo=''):
@@ -149,7 +162,7 @@ with aba1:
         st.plotly_chart(fig_mapa_receita, user_container_width=True)
         st.plotly_chart(fig_receita_estados, user_container_width=True)
 
-    with coluna2:
+    
         st.metric('Quantidade de venda', formatar_numero(dados.shape[0]))
         st.plotly_chart(fig_receita_mensal, user_container_width=True)
         st.plotly_chart(fig_receita_categorias, user_container_width=True)
